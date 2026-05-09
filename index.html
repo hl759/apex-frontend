@@ -6,114 +6,47 @@
 <meta name="theme-color" content="#080c14"/>
 <title>APEX TRADE — AI Sports Intelligence</title>
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{background:#080c14;color:#cdd3e0;font-family:system-ui,-apple-system,sans-serif;min-height:100vh}
-  ::-webkit-scrollbar{width:4px}
-  ::-webkit-scrollbar-track{background:#080c14}
-  ::-webkit-scrollbar-thumb{background:#1e2535;border-radius:2px}
-  input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
-  button{font-family:inherit;cursor:pointer}
-  .header{background:#0a0f1a;border-bottom:1px solid #1e2535;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-  .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#4a9eff,#00d4a0);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-  .tabs{background:#0a0f1a;border-bottom:1px solid #1e2535;display:flex;overflow-x:auto;padding:0 16px}
-  .tab{background:transparent;border:none;border-bottom:2px solid transparent;color:#555;padding:12px 16px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .2s}
-  .tab.active{color:#4a9eff;border-bottom-color:#4a9eff}
-  .content{max-width:900px;margin:0 auto;padding:16px}
-  .card{background:#111827;border:1px solid #1e2535;border-radius:14px;margin-bottom:14px;overflow:hidden}
-  .card-inner{background:#0d1117;border:1px solid #1e2535;border-radius:10px;padding:14px 16px;margin-bottom:10px;cursor:pointer}
-  .badge{border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700}
-  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:16px}
-  .stat-box{background:#111827;border:1px solid #1e2535;border-radius:10px;padding:12px 14px}
-  .btn-primary{background:linear-gradient(135deg,#4a9eff,#00d4a0);border:none;border-radius:12px;padding:14px 28px;color:#fff;font-weight:700;font-size:15px}
-  .btn-small{background:transparent;border:1px solid #1e2535;border-radius:8px;padding:4px 12px;color:#4a9eff;font-size:11px;font-weight:600}
-  .chat-wrap{height:52vh;overflow-y:auto;padding-bottom:8px;margin-bottom:12px}
-  .chat-input{flex:1;background:#111827;border:1px solid #1e2535;border-radius:12px;padding:12px 16px;color:#fff;font-size:13px;outline:none}
-  .chip{background:#111827;border:1px solid #1e2535;border-radius:20px;padding:5px 12px;color:#888;font-size:11px;white-space:nowrap;flex-shrink:0}
-  .chips{display:flex;gap:6px;overflow-x:auto;margin-bottom:10px;padding-bottom:4px}
-  .alert-green{background:#00d4a014;border:1px solid #00d4a044;border-radius:10px;padding:10px 14px;margin-bottom:14px}
-  .alert-red{background:#ff5e5e14;border:1px solid #ff5e5e44;border-radius:10px;padding:10px 14px;margin-bottom:14px}
-  .empty{text-align:center;padding:60px 20px}
-  @keyframes pulse{0%,80%,100%{transform:scale(.8);opacity:.4}40%{transform:scale(1);opacity:1}}
-  .dot{width:6px;height:6px;border-radius:50%;display:inline-block;animation:pulse 1.2s ease-in-out infinite}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#080c14;color:#cdd3e0;font-family:system-ui,-apple-system,sans-serif;min-height:100vh}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#080c14}::-webkit-scrollbar-thumb{background:#1e2535;border-radius:2px}
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+button{font-family:inherit;cursor:pointer}
+.header{background:#0a0f1a;border-bottom:1px solid #1e2535;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#4a9eff,#00d4a0);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.tabs{background:#0a0f1a;border-bottom:1px solid #1e2535;display:flex;overflow-x:auto;padding:0 16px}
+.tab{background:transparent;border:none;border-bottom:2px solid transparent;color:#555;padding:12px 16px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.tab.active{color:#4a9eff;border-bottom-color:#4a9eff}
+.content{max-width:900px;margin:0 auto;padding:16px}
+.card{background:#111827;border:1px solid #1e2535;border-radius:14px;margin-bottom:14px;overflow:hidden}
+.opp-card{background:#0d1117;border:1px solid #1e2535;border-radius:10px;padding:14px 16px;margin-bottom:10px;cursor:pointer}
+.badge{border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:16px}
+.stat-box{background:#111827;border:1px solid #1e2535;border-radius:10px;padding:12px 14px}
+.btn-primary{background:linear-gradient(135deg,#4a9eff,#00d4a0);border:none;border-radius:12px;padding:14px 28px;color:#fff;font-weight:700;font-size:15px}
+.chat-wrap{height:52vh;overflow-y:auto;padding-bottom:8px;margin-bottom:12px}
+.chat-input{flex:1;background:#111827;border:1px solid #1e2535;border-radius:12px;padding:12px 16px;color:#fff;font-size:13px;outline:none}
+.chip{background:#111827;border:1px solid #1e2535;border-radius:20px;padding:5px 12px;color:#888;font-size:11px;white-space:nowrap;flex-shrink:0}
+.chips{display:flex;gap:6px;overflow-x:auto;margin-bottom:10px;padding-bottom:4px}
+.alert-green{background:#00d4a014;border:1px solid #00d4a044;border-radius:10px;padding:10px 14px;margin-bottom:14px}
+.alert-red{background:#ff5e5e14;border:1px solid #ff5e5e44;border-radius:10px;padding:10px 14px;margin-bottom:14px}
+.empty{text-align:center;padding:60px 20px}
+@keyframes pulse{0%,80%,100%{transform:scale(.8);opacity:.4}40%{transform:scale(1);opacity:1}}
 </style>
 </head>
 <body>
-
-<!-- Will be replaced by React app below -->
 <div id="root"></div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
-
 <script type="text/babel">
 const { useState, useEffect, useRef, useCallback } = React;
 
-// ── CONFIGURE AQUI após deploy do Render ──────────────────────────────────
-// Substitua pela URL do seu serviço no Render após o deploy
-const BACKEND_URL = "https://apex-backend-ccxs.onrender.com";
-// ─────────────────────────────────────────────────────────────────────────
-
-const SYSTEM_PROMPT = `Você é APEX TRADE — uma inteligência artificial de elite especializada em trade esportivo de futebol, construída sobre a sabedoria coletiva dos 100 traders esportivos profissionais mais lucrativos do mundo.
-
-MISSÃO: Identificar oportunidades de valor esperado positivo (EV+) com máxima precisão estatística.
-
-REGRAS INEGOCIÁVEIS:
-1. NUNCA prometer lucro garantido
-2. SEMPRE informar o risco
-3. NUNCA recomendar all-in
-4. Priorizar consistência acima de lucro rápido
-
-FORMATO — responda SEMPRE em JSON puro (sem markdown, sem backticks):
-
-Para análise de jogos:
-{
-  "type": "analysis",
-  "matches": [
-    {
-      "id": "id",
-      "homeTeam": "Time Casa",
-      "awayTeam": "Time Visitante",
-      "league": "Liga",
-      "country": "País",
-      "time": "HH:MM",
-      "status": "pre-live",
-      "score": "-",
-      "xgHome": 1.4,
-      "xgAway": 1.0,
-      "matchContext": "Contexto técnico",
-      "opportunities": [
-        {
-          "market": "Over 2.5 Gols",
-          "selection": "Over 2.5",
-          "odds": 1.85,
-          "probability": 65,
-          "confidence": 78,
-          "ev": 5.2,
-          "stake": 3,
-          "timing": "Pré-live",
-          "cashout": "Momento ideal de saída",
-          "riskLevel": "baixo",
-          "rationale": "Explicação técnica detalhada",
-          "keyStats": ["stat1", "stat2"],
-          "suspiciousMovement": false,
-          "consistencyScore": 76
-        }
-      ]
-    }
-  ],
-  "dailySummary": "Resumo do dia",
-  "marketAlert": null
-}
-
-Para chat: {"type":"chat","message":"resposta"}
-
-Selecione TOP 5 jogos com maior EV+. Priorize qualidade.`;
+const BACKEND = "https://apex-backend-ccxs.onrender.com";
 
 const riskColor={baixo:"#00d4a0",médio:"#f5c842",alto:"#ff5e5e"};
 const modeColor={conservador:"#4a9eff",moderado:"#f5c842",agressivo:"#ff5e5e"};
-const statusLabel={"pre-live":"PRÉ-LIVE",live:"AO VIVO",upcoming:"EM BREVE",finished:"ENCERRADO"};
-const statusColor={"pre-live":"#4a9eff",live:"#00d4a0",upcoming:"#888",finished:"#444"};
+const statusLabel={"pre-live":"PRÉ-LIVE","NS":"PRÉ-LIVE","1H":"AO VIVO","2H":"AO VIVO","HT":"INTERVALO","ET":"PRORROGAÇÃO","live":"AO VIVO",finished:"ENCERRADO"};
+const statusColor={"pre-live":"#4a9eff","NS":"#4a9eff","1H":"#00d4a0","2H":"#00d4a0","HT":"#f5c842","ET":"#f5c842",live:"#00d4a0",finished:"#444"};
 
 function ScoreRing({score,size=52}){
   const r=size/2-6,circ=2*Math.PI*r,dash=(score/100)*circ;
@@ -138,7 +71,7 @@ function EVBadge({ev}){
 function OppCard({opp}){
   const [exp,setExp]=useState(false);
   return(
-    <div className="card-inner" onClick={()=>setExp(e=>!e)}>
+    <div className="opp-card" onClick={()=>setExp(e=>!e)}>
       <div style={{display:"flex",alignItems:"center",gap:12,flexWrap:"wrap"}}>
         <ScoreRing score={opp.consistencyScore}/>
         <div style={{flex:1,minWidth:0}}>
@@ -193,7 +126,7 @@ function MatchCard({match}){
       <div onClick={()=>setOpen(o=>!o)} style={{padding:"14px 18px",display:"flex",alignItems:"center",gap:12,cursor:"pointer"}}>
         <div style={{flex:1}}>
           <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:3,flexWrap:"wrap"}}>
-            <span className="badge" style={{color:statusColor[st]||"#888",border:`1px solid ${statusColor[st]||"#888"}55`}}>{statusLabel[st]||st?.toUpperCase()}</span>
+            <span className="badge" style={{color:statusColor[st]||"#888",border:`1px solid ${statusColor[st]||"#888"}55`}}>{statusLabel[st]||st}</span>
             <span style={{color:"#888",fontSize:11}}>{match.league}</span>
             {match.country&&<span style={{color:"#555",fontSize:11}}>• {match.country}</span>}
             <span style={{color:"#555",fontSize:11}}>• {match.time}</span>
@@ -283,85 +216,90 @@ function BankrollSim(){
 
 function App(){
   const [tab,setTab]=useState("dashboard");
-  const [chatMessages,setChatMessages]=useState([{role:"assistant",content:"⚡ APEX TRADE online!\n\nClique em '📊 Buscar Jogos de Hoje' para carregar as partidas reais e gerar análise completa.\n\nOu me faça qualquer pergunta sobre trade esportivo."}]);
+  const [msgs,setMsgs]=useState([{role:"assistant",content:"⚡ APEX TRADE online!\n\nClique em '📊 Buscar Jogos de Hoje' para carregar as partidas reais e gerar análise completa.\n\nOu me faça qualquer pergunta sobre trade esportivo."}]);
   const [input,setInput]=useState("");
   const [loading,setLoading]=useState(false);
   const [loadingFix,setLoadingFix]=useState(false);
-  const [analysisData,setAnalysisData]=useState(null);
+  const [analysis,setAnalysis]=useState(null);
   const [riskMode,setRiskMode]=useState("moderado");
   const [apiStatus,setApiStatus]=useState("idle");
   const chatEndRef=useRef(null);
   const history=useRef([]);
 
-  useEffect(()=>{chatEndRef.current?.scrollIntoView({behavior:"smooth"});},[chatMessages]);
-
-  const fetchFixtures=useCallback(async()=>{
-    setApiStatus("loading");
-    const res=await fetch(`${BACKEND_URL}/fixtures/today`);
-    if(!res.ok)throw new Error(`HTTP ${res.status}`);
-    const data=await res.json();
-    if(!data.success)throw new Error(data.error||"API error");
-    setApiStatus("ok");
-    return data.fixtures||[];
-  },[]);
-
-  const runAnalysis=useCallback(async(fixtures)=>{
-    if(!fixtures?.length){setLoadingFix(false);return;}
-    const prompt=`Dados reais da ApiFootball — jogos de hoje ${new Date().toLocaleDateString("pt-BR")}:\n\n${JSON.stringify(fixtures,null,2)}\n\nSelecione os TOP 5 com maior EV+. Gere oportunidades detalhadas para perfil "${riskMode}". Responda APENAS com o JSON de análise.`;
-    history.current.push({role:"user",content:prompt});
-    try{
-      const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,system:SYSTEM_PROMPT,messages:history.current})});
-      const d=await res.json();
-      const raw=d.content?.map(b=>b.text||"").join("")||"";
-      history.current.push({role:"assistant",content:raw});
-      let parsed;try{parsed=JSON.parse(raw.replace(/```json|```/g,"").trim());}catch{parsed={type:"chat",message:raw};}
-      if(parsed.type==="analysis"){
-        setAnalysisData(parsed);setTab("dashboard");
-        setChatMessages(prev=>[...prev,{role:"assistant",content:`📊 ${fixtures.length} jogos reais analisados!\n\n${parsed.dailySummary||""}${parsed.marketAlert?"\n\n"+parsed.marketAlert:""}`}]);
-      }else{setChatMessages(prev=>[...prev,{role:"assistant",content:parsed.message||raw}]);}
-    }catch{setChatMessages(prev=>[...prev,{role:"assistant",content:"❌ Erro na análise IA. Tente novamente."}]);}
-    setLoadingFix(false);
-  },[riskMode]);
+  useEffect(()=>{chatEndRef.current?.scrollIntoView({behavior:"smooth"});},[msgs]);
 
   const handleFetch=useCallback(async()=>{
     if(loadingFix)return;
     setLoadingFix(true);setTab("chat");
-    setChatMessages(prev=>[...prev,{role:"user",content:"📊 Buscar e analisar jogos de hoje"},{role:"assistant",content:"🔄 Buscando jogos reais no backend..."}]);
+    setMsgs(prev=>[...prev,{role:"user",content:"📊 Buscar e analisar jogos de hoje"},{role:"assistant",content:"🔄 Buscando jogos reais no backend..."}]);
     try{
-      const fixtures=await fetchFixtures();
-      if(fixtures.length>0){
-        setChatMessages(prev=>[...prev,{role:"assistant",content:`✅ ${fixtures.length} jogos encontrados! Analisando com APEX TRADE IA...`}]);
-        await runAnalysis(fixtures);
+      // 1. Busca fixtures
+      setApiStatus("loading");
+      const r1=await fetch(`${BACKEND}/fixtures/today`);
+      const d1=await r1.json();
+      if(!d1.success)throw new Error(d1.error||"Erro ao buscar jogos");
+      setApiStatus("ok");
+      const fixtures=d1.fixtures||[];
+      if(!fixtures.length){
+        setMsgs(prev=>[...prev,{role:"assistant",content:"⚠️ Nenhum jogo ativo agora. Tente mais tarde."}]);
+        setLoadingFix(false);return;
+      }
+      setMsgs(prev=>[...prev,{role:"assistant",content:`✅ ${fixtures.length} jogos encontrados! Analisando com APEX TRADE IA...`}]);
+
+      // 2. Analisa com IA via backend
+      const r2=await fetch(`${BACKEND}/analyze`,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({fixtures,riskMode,history:history.current})
+      });
+      const d2=await r2.json();
+      if(!d2.success)throw new Error(d2.error||"Erro na análise");
+
+      const parsed=d2.result;
+      if(parsed.type==="analysis"){
+        setAnalysis(parsed);setTab("dashboard");
+        history.current.push({role:"assistant",content:JSON.stringify(parsed)});
+        setMsgs(prev=>[...prev,{role:"assistant",content:`📊 ${fixtures.length} jogos analisados!\n\n${parsed.dailySummary||""}${parsed.marketAlert?"\n\n"+parsed.marketAlert:""}`}]);
       }else{
-        setChatMessages(prev=>[...prev,{role:"assistant",content:"⚠️ Nenhum jogo ativo agora. Tente mais tarde."}]);
-        setLoadingFix(false);
+        setMsgs(prev=>[...prev,{role:"assistant",content:parsed.message||"Análise concluída."}]);
       }
     }catch(e){
-      setChatMessages(prev=>[...prev,{role:"assistant",content:`❌ Erro: ${e.message}\n\nVerifique se o backend está rodando no Render.`}]);
-      setApiStatus("error");setLoadingFix(false);
+      setApiStatus("error");
+      setMsgs(prev=>[...prev,{role:"assistant",content:`❌ Erro: ${e.message}`}]);
     }
-  },[loadingFix,fetchFixtures,runAnalysis]);
+    setLoadingFix(false);
+  },[loadingFix,riskMode]);
 
   const sendMessage=async()=>{
     const msg=input.trim();if(!msg||loading)return;
     setInput("");setLoading(true);
-    setChatMessages(prev=>[...prev,{role:"user",content:msg}]);
-    history.current.push({role:"user",content:`${msg}\n\n[Perfil: ${riskMode}]`});
+    setMsgs(prev=>[...prev,{role:"user",content:msg}]);
+    history.current.push({role:"user",content:msg});
     try{
-      const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,system:SYSTEM_PROMPT,messages:history.current})});
+      const res=await fetch(`${BACKEND}/chat`,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({message:msg,riskMode,history:history.current.slice(-6)})
+      });
       const d=await res.json();
-      const raw=d.content?.map(b=>b.text||"").join("")||"";
-      history.current.push({role:"assistant",content:raw});
-      let parsed;try{parsed=JSON.parse(raw.replace(/```json|```/g,"").trim());}catch{parsed={type:"chat",message:raw};}
-      if(parsed.type==="analysis"){setAnalysisData(parsed);setTab("dashboard");setChatMessages(prev=>[...prev,{role:"assistant",content:`📊 Dashboard atualizado!\n\n${parsed.dailySummary||""}`}]);}
-      else{setChatMessages(prev=>[...prev,{role:"assistant",content:parsed.message||raw}]);}
-    }catch{setChatMessages(prev=>[...prev,{role:"assistant",content:"❌ Erro. Tente novamente."}]);}
+      if(!d.success)throw new Error(d.error);
+      const parsed=d.result;
+      history.current.push({role:"assistant",content:JSON.stringify(parsed)});
+      if(parsed.type==="analysis"){
+        setAnalysis(parsed);setTab("dashboard");
+        setMsgs(prev=>[...prev,{role:"assistant",content:`📊 Dashboard atualizado!\n\n${parsed.dailySummary||""}`}]);
+      }else{
+        setMsgs(prev=>[...prev,{role:"assistant",content:parsed.message||""}]);
+      }
+    }catch(e){
+      setMsgs(prev=>[...prev,{role:"assistant",content:`❌ Erro: ${e.message}`}]);
+    }
     setLoading(false);
   };
 
-  const allOpp=(analysisData?.matches||[]).flatMap(m=>(m.opportunities||[]).map(o=>({...o,match:`${m.homeTeam} x ${m.awayTeam}`,league:m.league}))).sort((a,b)=>b.consistencyScore-a.consistencyScore);
+  const allOpp=(analysis?.matches||[]).flatMap(m=>(m.opportunities||[]).map(o=>({...o,match:`${m.homeTeam} x ${m.awayTeam}`,league:m.league}))).sort((a,b)=>b.consistencyScore-a.consistencyScore);
   const tabs=[{id:"dashboard",label:"Dashboard",icon:"⚡"},{id:"opportunities",label:"Ranking",icon:"🎯"},{id:"chat",label:"IA Chat",icon:"🤖"},{id:"bankroll",label:"Banca",icon:"💰"}];
-  const quickPrompts=[{label:"📊 Buscar Jogos de Hoje",action:handleFetch},{label:"💰 Gestão R$1000",msg:"Calcule a gestão de banca ideal para R$ 1000"},{label:"📈 Over/Under",msg:"Explique a melhor estratégia Over/Under no futebol"},{label:"🎯 Trade ao vivo",msg:"Como fazer trade ao vivo com segurança?"},{label:"⚠️ Erros comuns",msg:"Quais os erros mais comuns de traders iniciantes?"}];
+  const quickPrompts=[{label:"📊 Buscar Jogos de Hoje",action:handleFetch},{label:"💰 Gestão R$1000",msg:"Calcule a gestão de banca ideal para R$ 1000"},{label:"📈 Over/Under",msg:"Explique a melhor estratégia Over/Under"},{label:"🎯 Trade ao vivo",msg:"Como fazer trade ao vivo com segurança?"},{label:"⚠️ Erros comuns",msg:"Quais os erros mais comuns de traders iniciantes?"}];
 
   return(
     <div>
@@ -390,32 +328,30 @@ function App(){
       <div className="content">
         {tab==="dashboard"&&(
           <div>
-            {!analysisData?(
+            {!analysis?(
               <div className="empty">
                 <div style={{fontSize:48,marginBottom:16}}>⚡</div>
                 <div style={{color:"#fff",fontWeight:700,fontSize:20,marginBottom:8}}>APEX TRADE pronto</div>
-                <p style={{color:"#6b7385",fontSize:14,marginBottom:24,maxWidth:320,margin:"0 auto 24px"}}>Busque os jogos reais de hoje e deixe a IA analisar as melhores oportunidades.</p>
-                <button className="btn-primary" onClick={handleFetch} disabled={loadingFix} style={{opacity:loadingFix?0.7:1}}>
-                  {loadingFix?"🔄 Buscando...":"📊 Buscar Jogos de Hoje"}
-                </button>
+                <p style={{color:"#6b7385",fontSize:14,margin:"0 auto 24px",maxWidth:300}}>Busque os jogos reais de hoje e deixe a IA analisar as melhores oportunidades.</p>
+                <button className="btn-primary" onClick={handleFetch} disabled={loadingFix} style={{opacity:loadingFix?0.7:1}}>{loadingFix?"🔄 Analisando...":"📊 Buscar Jogos de Hoje"}</button>
               </div>
             ):(
               <div>
-                {analysisData.marketAlert&&<div className="alert-red"><p style={{color:"#ff8888",fontSize:12,margin:0,lineHeight:1.5}}>{analysisData.marketAlert}</p></div>}
-                {analysisData.dailySummary&&<div className="alert-green"><div style={{color:"#00d4a0",fontSize:11,fontWeight:700,marginBottom:4,letterSpacing:1}}>RESUMO DO DIA</div><p style={{color:"#cdd3e0",fontSize:13,margin:0,lineHeight:1.5}}>{analysisData.dailySummary}</p></div>}
+                {analysis.marketAlert&&<div className="alert-red"><p style={{color:"#ff8888",fontSize:12,margin:0,lineHeight:1.5}}>{analysis.marketAlert}</p></div>}
+                {analysis.dailySummary&&<div className="alert-green"><div style={{color:"#00d4a0",fontSize:11,fontWeight:700,marginBottom:4,letterSpacing:1}}>RESUMO DO DIA</div><p style={{color:"#cdd3e0",fontSize:13,margin:0,lineHeight:1.5}}>{analysis.dailySummary}</p></div>}
                 <div className="stat-grid">
-                  {[{label:"Jogos",value:analysisData.matches.length,color:"#4a9eff",icon:"⚽"},{label:"Oportunidades",value:allOpp.length,color:"#00d4a0",icon:"🎯"},{label:"EV+ Médio",value:allOpp.length?(allOpp.reduce((s,o)=>s+Number(o.ev),0)/allOpp.length).toFixed(1)+"%":"-",color:"#f5c842",icon:"📈"},{label:"Score Médio",value:allOpp.length?Math.round(allOpp.reduce((s,o)=>s+o.consistencyScore,0)/allOpp.length):"-",color:"#a78bfa",icon:"⭐"}].map((s,i)=>(
+                  {[{l:"Jogos",v:analysis.matches.length,c:"#4a9eff",i:"⚽"},{l:"Oportunidades",v:allOpp.length,c:"#00d4a0",i:"🎯"},{l:"EV+ Médio",v:allOpp.length?(allOpp.reduce((s,o)=>s+Number(o.ev),0)/allOpp.length).toFixed(1)+"%":"-",c:"#f5c842",i:"📈"},{l:"Score Médio",v:allOpp.length?Math.round(allOpp.reduce((s,o)=>s+o.consistencyScore,0)/allOpp.length):"-",c:"#a78bfa",i:"⭐"}].map((s,i)=>(
                     <div key={i} className="stat-box">
-                      <div style={{display:"flex",justifyContent:"space-between"}}><div style={{color:"#888",fontSize:10}}>{s.label.toUpperCase()}</div><span>{s.icon}</span></div>
-                      <div style={{color:s.color,fontWeight:700,fontSize:22,marginTop:4}}>{s.value}</div>
+                      <div style={{display:"flex",justifyContent:"space-between"}}><div style={{color:"#888",fontSize:10}}>{s.l.toUpperCase()}</div><span>{s.i}</span></div>
+                      <div style={{color:s.c,fontWeight:700,fontSize:22,marginTop:4}}>{s.v}</div>
                     </div>
                   ))}
                 </div>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
                   <div style={{color:"#888",fontSize:11,fontWeight:600,letterSpacing:1.5}}>PARTIDAS ANALISADAS</div>
-                  <button className="btn-small" onClick={handleFetch} disabled={loadingFix}>{loadingFix?"🔄":"↻ Atualizar"}</button>
+                  <button onClick={handleFetch} disabled={loadingFix} style={{background:"transparent",border:"1px solid #1e2535",borderRadius:8,padding:"4px 12px",color:"#4a9eff",fontSize:11,fontWeight:600}}>{loadingFix?"🔄":"↻ Atualizar"}</button>
                 </div>
-                {analysisData.matches.map(m=><MatchCard key={m.id} match={m}/>)}
+                {analysis.matches.map(m=><MatchCard key={m.id} match={m}/>)}
               </div>
             )}
           </div>
@@ -423,7 +359,7 @@ function App(){
 
         {tab==="opportunities"&&(
           <div>
-            <div style={{color:"#888",fontSize:11,fontWeight:600,letterSpacing:1.5,marginBottom:12}}>RANKING DE OPORTUNIDADES — HOJE</div>
+            <div style={{color:"#888",fontSize:11,fontWeight:600,letterSpacing:1.5,marginBottom:12}}>RANKING DE OPORTUNIDADES</div>
             {allOpp.length===0?(
               <div className="empty" style={{padding:"40px 20px",color:"#555"}}>
                 <div style={{fontSize:32,marginBottom:12}}>🎯</div>
@@ -448,14 +384,15 @@ function App(){
         {tab==="chat"&&(
           <div>
             <div className="chat-wrap">
-              {chatMessages.map((m,i)=><ChatBubble key={i} msg={m}/>)}
+              {msgs.map((m,i)=><ChatBubble key={i} msg={m}/>)}
               {(loading||loadingFix)&&(
                 <div style={{display:"flex",gap:8,alignItems:"center",padding:"8px 0"}}>
                   <div style={{width:32,height:32,borderRadius:"50%",background:"linear-gradient(135deg,#4a9eff,#00d4a0)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>⚡</div>
                   <div style={{background:"#111827",border:"1px solid #1e2535",borderRadius:"16px 16px 16px 4px",padding:"12px 16px"}}>
                     <div style={{display:"flex",gap:4}}>
-                      {[0,1,2].map(j=><div key={j} className="dot" style={{background:"#4a9eff",animationDelay:`${j*0.2}s`}}/>)}
+                      {[0,1,2].map(j=><div key={j} style={{width:6,height:6,borderRadius:"50%",background:"#4a9eff",animation:`pulse 1.2s ease-in-out ${j*0.2}s infinite`}}/>)}
                     </div>
+                    <style>{`@keyframes pulse{0%,80%,100%{transform:scale(.8);opacity:.4}40%{transform:scale(1);opacity:1}}`}</style>
                   </div>
                 </div>
               )}
